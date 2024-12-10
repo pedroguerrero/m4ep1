@@ -4,6 +4,8 @@ import DoctorPage from './components/pages/DoctorPage';
 import ContactPage from './components/pages/ContactPage';
 import PatientsPage from './components/pages/PatientsPage';
 import hospitalSvg from './assets/hospital-icon.svg';
+import Header from './components/components/Header';
+import NavBar from './components/components/NavBar';
 
 function App() {
   const [pageActive, setPageActive] = useState('index');
@@ -14,10 +16,16 @@ function App() {
     contacto: <ContactPage />,
   };
 
+  const changePage = (event, page) => {
+    event.preventDefault();
+
+    setPageActive(page);
+  };
+
   return (
     <>
-      <header>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <Header>
+        <NavBar>
           <div className="container-fluid">
             <button
               className="navbar-toggler"
@@ -34,7 +42,7 @@ function App() {
               <a
                 className="navbar-brand d-flex align-items-center"
                 href="#"
-                onClick={() => setPageActive('index')}
+                onClick={(e) => changePage(e, 'index')}
               >
                 <img src={hospitalSvg} alt="" height="40" className="me-2" />
                 VidaPlena
@@ -45,7 +53,7 @@ function App() {
                     className={`nav-link ${pageActive === 'index' && 'active'}`}
                     aria-current="page"
                     href="#"
-                    onClick={() => setPageActive('index')}
+                    onClick={(e) => changePage(e, 'index')}
                   >
                     Inicio
                   </a>
@@ -56,7 +64,7 @@ function App() {
                       pageActive === 'equipo-medico' && 'active'
                     }`}
                     href="#"
-                    onClick={() => setPageActive('equipo-medico')}
+                    onClick={(e) => changePage(e, 'equipo-medico')}
                   >
                     Equipo médico
                   </a>
@@ -67,7 +75,7 @@ function App() {
                       pageActive === 'citas-pacientes' && 'active'
                     }`}
                     href="#"
-                    onClick={() => setPageActive('citas-pacientes')}
+                    onClick={(e) => changePage(e, 'citas-pacientes')}
                   >
                     Citas Pacientes
                   </a>
@@ -78,7 +86,7 @@ function App() {
                       pageActive === 'contacto' && 'active'
                     }`}
                     href="#"
-                    onClick={() => setPageActive('contacto')}
+                    onClick={(e) => changePage(e, 'contacto')}
                   >
                     Contacto
                   </a>
@@ -96,8 +104,8 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
-      </header>
+        </NavBar>
+      </Header>
 
       {pages[pageActive]}
 
@@ -107,7 +115,7 @@ function App() {
             <a
               href="#"
               className="nav-link px-2 text-body-secondary"
-              onClick={() => setPageActive('index')}
+              onClick={(e) => changePage(e, 'index')}
             >
               Inicio
             </a>
@@ -116,7 +124,7 @@ function App() {
             <a
               href="#"
               className="nav-link px-2 text-body-secondary"
-              onClick={() => setPageActive('equipo-medico')}
+              onClick={(e) => changePage(e, 'equipo-medico')}
             >
               Equipo médico
             </a>
@@ -125,7 +133,7 @@ function App() {
             <a
               href="#"
               className="nav-link px-2 text-body-secondary"
-              onClick={() => setPageActive('contacto')}
+              onClick={(e) => changePage(e, 'contacto')}
             >
               Contacto
             </a>
