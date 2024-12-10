@@ -6,6 +6,7 @@ import PatientsPage from './components/pages/PatientsPage';
 import hospitalSvg from './assets/hospital-icon.svg';
 import Header from './components/components/Header';
 import NavBar from './components/components/NavBar';
+import Footer from './components/components/Footer';
 
 function App() {
   const [pageActive, setPageActive] = useState('index');
@@ -91,16 +92,6 @@ function App() {
                     Contacto
                   </a>
                 </li>
-                <li className="nav-item">
-                  <button
-                    type="button"
-                    className="btn btn-primary abrir-agenda"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    Reserva tu hora
-                  </button>
-                </li>
               </ul>
             </div>
           </div>
@@ -109,71 +100,7 @@ function App() {
 
       {pages[pageActive]}
 
-      <footer>
-        <ul className="nav justify-content-center border-bottom mb-3 mt-5">
-          <li className="nav-item">
-            <a
-              href="#"
-              className="nav-link px-2 text-body-secondary"
-              onClick={(e) => changePage(e, 'index')}
-            >
-              Inicio
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              href="#"
-              className="nav-link px-2 text-body-secondary"
-              onClick={(e) => changePage(e, 'equipo-medico')}
-            >
-              Equipo médico
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              href="#"
-              className="nav-link px-2 text-body-secondary"
-              onClick={(e) => changePage(e, 'contacto')}
-            >
-              Contacto
-            </a>
-          </li>
-        </ul>
-
-        <ul className="nav justify-content-center list-unstyled p-3 d-flex">
-          <li className="fs-4">
-            <a
-              className="text-body-secondary"
-              target="_blank"
-              href="#"
-              aria-label="Twitter"
-            >
-              <i className="bi bi-twitter"></i>
-            </a>
-          </li>
-          <li className="ms-3 fs-4">
-            <a
-              className="text-body-secondary"
-              target="_blank"
-              href="#"
-              aria-label="Instagram"
-            >
-              <i className="bi bi-instagram"></i>
-            </a>
-          </li>
-          <li className="ms-3 fs-4">
-            <a
-              className="text-body-secondary"
-              target="_blank"
-              href="#"
-              aria-label="Facebook"
-            >
-              <i className="bi bi-facebook"></i>
-            </a>
-          </li>
-        </ul>
-        <p className="text-center text-body-secondary">© 2024 VidaPlena</p>
-      </footer>
+      <Footer changePage={changePage} />
     </>
   );
 }
