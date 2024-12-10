@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import MainPage from './components/MainPage';
-import DoctorPage from './components/DoctorPage';
-import ContactPage from './components/ContactPage';
-import PatientsPage from './components/PatientsPage';
+import MainPage from './components/pages/MainPage';
+import DoctorPage from './components/pages/DoctorPage';
+import ContactPage from './components/pages/ContactPage';
+import PatientsPage from './components/pages/PatientsPage';
 import hospitalSvg from './assets/hospital-icon.svg';
 
 function App() {

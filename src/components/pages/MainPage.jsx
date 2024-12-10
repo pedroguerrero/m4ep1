@@ -1,8 +1,8 @@
-import background from '../assets/bg.jpg';
-import patient1 from '../assets/patient-1.png';
-import patient2 from '../assets/patient-2.png';
-import patient3 from '../assets/patient-3.png';
-import ServiceList from './ServiceList';
+import background from '../../assets/bg.jpg';
+import patient1 from '../../assets/patient-1.png';
+import patient2 from '../../assets/patient-2.png';
+import patient3 from '../../assets/patient-3.png';
+import ServiceList from '../components/ServiceList';
 
 export default function MainPage() {
   return (

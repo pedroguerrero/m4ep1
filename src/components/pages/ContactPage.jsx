@@ -1,4 +1,4 @@
-import background from '../assets/bg-3.jpg';
+import background from '../../assets/bg-3.jpg';
 
 export default function ContactPage() {
   const onSubmit = (event) => {

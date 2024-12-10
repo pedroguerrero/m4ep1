@@ -1,5 +1,5 @@
-import background from '../assets/bg-2.jpg';
-import DoctorList from './DoctorList';
+import background from '../../assets/bg-2.jpg';
+import DoctorList from '../components/DoctorList';
 
 export default function DoctorPage() {
   return (

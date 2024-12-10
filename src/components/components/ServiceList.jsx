@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import ServiceItem from './ServiceItem';
-import service1 from '../assets/service-1.png';
-import service2 from '../assets/service-2.png';
-import service3 from '../assets/service-3.png';
+import service1 from '../../assets/service-1.png';
+import service2 from '../../assets/service-2.png';
+import service3 from '../../assets/service-3.png';
 
 export default function ServiceList() {
   const [services] = useState([

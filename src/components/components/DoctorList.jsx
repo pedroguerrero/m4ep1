@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import docImg from '../assets/doc-1.png';
+import docImg from '../../assets/doc-1.png';
 import DoctorItem from './DoctorItem';
 
 export default function DoctorList() {
