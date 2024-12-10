@@ -1,15 +1,19 @@
 import { useState } from 'react';
-import MainPage from './components/pages/MainPage';
-import DoctorPage from './components/pages/DoctorPage';
-import ContactPage from './components/pages/ContactPage';
-import PatientsPage from './components/pages/PatientsPage';
 import hospitalSvg from './assets/hospital-icon.svg';
+import Image from './components/components/Image';
+import MainPage from './components/pages/MainPage';
 import Header from './components/components/Header';
 import NavBar from './components/components/NavBar';
 import Footer from './components/components/Footer';
+import Button from './components/components/Button';
+import DoctorPage from './components/pages/DoctorPage';
+import ContactPage from './components/pages/ContactPage';
+import PatientsPage from './components/pages/PatientsPage';
+import Container from './components/components/Container';
 
 function App() {
   const [pageActive, setPageActive] = useState('index');
+  const [showNav, setShowNav] = useState(false);
   const pages = {
     index: <MainPage />,
     'equipo-medico': <DoctorPage />,
@@ -27,25 +31,28 @@ function App() {
     <>
       <Header>
         <NavBar>
-          <div className="container-fluid">
-            <button
+          <Container className="container-fluid">
+            <Button
               className="navbar-toggler"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#nav"
               aria-controls="nav"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              onClick={() => setShowNav((s) => !s)}
             >
               <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="nav">
+            </Button>
+
+            <Container
+              className={`collapse navbar-collapse ${showNav && 'show'}`}
+              id="nav"
+            >
               <a
                 className="navbar-brand d-flex align-items-center"
                 href="#"
                 onClick={(e) => changePage(e, 'index')}
               >
-                <img src={hospitalSvg} alt="" height="40" className="me-2" />
+                <Image src={hospitalSvg} alt="" height="40" className="me-2" />
                 VidaPlena
               </a>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -93,8 +100,8 @@ function App() {
                   </a>
                 </li>
               </ul>
-            </div>
-          </div>
+            </Container>
+          </Container>
         </NavBar>
       </Header>
 

@@ -1,7 +1,24 @@
+import { useState, useEffect } from 'react';
 import background from '../../assets/bg-2.jpg';
+import { getDoctors } from '../utils/doctor';
+import Row from '../components/Row';
+import Loading from '../components/Loading';
+import Container from '../components/Container';
 import DoctorList from '../components/DoctorList';
 
 export default function DoctorPage() {
+  const [doctors, setDoctors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getDoctors()
+      .then((doctors) => {
+        setDoctors(doctors);
+        setIsLoading(false);
+      })
+      .catch(() => alert('Error al obtener los medicos'));
+  }, []);
+
   return (
     <main>
       <section
@@ -12,9 +29,9 @@ export default function DoctorPage() {
           backgroundSize: 'cover',
         }}
       >
-        <div className="container text-center">
-          <div className="row">
-            <div className="col">
+        <Container className="container text-center">
+          <Row>
+            <Container className="col">
               <h1>Equipo médico</h1>
               <p className="fs-4">
                 Conoce a nuestro equipo médico, un grupo de profesionales
@@ -23,21 +40,25 @@ export default function DoctorPage() {
                 brindarte la mejor atención posible. Estamos aquí para cuidar de
                 ti en cada paso del camino hacia la recuperación.
               </p>
-            </div>
-          </div>
-        </div>
+            </Container>
+          </Row>
+        </Container>
       </section>
 
       <section>
-        <div className="container">
-          <div className="row">
-            <div className="col text-center mt-5 mb-5">
+        <Container className="container">
+          <Row>
+            <Container className="col text-center mt-5 mb-5">
               <h2>Equipo médico</h2>
-            </div>
-          </div>
+            </Container>
+          </Row>
 
-          <DoctorList />
-        </div>
+          {isLoading ? (
+            <Loading size="5rem" />
+          ) : (
+            <DoctorList doctors={doctors} />
+          )}
+        </Container>
       </section>
     </main>
   );
