@@ -2,12 +2,18 @@ import Button from './Button';
 import Container from './Container';
 
 /* eslint-disable react/prop-types */
-export default function Modal({ title, children, showModal, onClose, okText }) {
+export default function Modal({
+  title,
+  children,
+  showModal,
+  onClose,
+  okText,
+  onSuccess,
+}) {
   return (
     <Container
       className="modal fade show"
       tabIndex="-1"
-      aria-hidden={showModal}
       style={{
         display: `${showModal ? 'block' : 'none'}`,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -37,7 +43,11 @@ export default function Modal({ title, children, showModal, onClose, okText }) {
             >
               Cerrar
             </Button>
-            <Button type="button" className="btn btn-primary">
+            <Button
+              type="button"
+              className="btn btn-primary"
+              onClick={onSuccess}
+            >
               {okText || 'Aceptar'}
             </Button>
           </Container>
