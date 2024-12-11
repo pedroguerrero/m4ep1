@@ -2,14 +2,7 @@ import Button from './Button';
 import Container from './Container';
 
 /* eslint-disable react/prop-types */
-export default function Modal({
-  title,
-  children,
-  showModal,
-  onClose,
-  okText,
-  onSuccess,
-}) {
+export default function Modal({ title, children, showModal, onClose }) {
   return (
     <Container
       className="modal fade show"
@@ -34,23 +27,6 @@ export default function Modal({
             ></Button>
           </Container>
           <Container className="modal-body">{children}</Container>
-          <Container className="modal-footer">
-            <Button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-              onClick={onClose}
-            >
-              Cerrar
-            </Button>
-            <Button
-              type="button"
-              className="btn btn-primary"
-              onClick={onSuccess}
-            >
-              {okText || 'Aceptar'}
-            </Button>
-          </Container>
         </Container>
       </Container>
     </Container>

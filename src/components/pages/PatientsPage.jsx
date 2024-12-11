@@ -5,6 +5,7 @@ import Modal from '../components/Modal';
 import Button from '../components/Button';
 import { getDoctors } from '../utils/doctor';
 import Container from '../components/Container';
+import AppointmentForm from '../components/AppointmentForm';
 
 export default function PatientsPage() {
   const [patient, setPatient] = useState({
@@ -36,84 +37,18 @@ export default function PatientsPage() {
         title="Agendar Paciente"
         showModal={showModal}
         onClose={() => setShowModal(false)}
-        onSuccess={() => {
-          setPatients((patients) => [...patients, patient]);
-
-          setShowModal(false);
-        }}
       >
-        <Container className="mb-3">
-          <label htmlFor="nombre" className="form-label">
-            Nombre
-          </label>
-          <input
-            id="nombre"
-            className="form-control"
-            placeholder="Nombre"
-            onChange={(event) =>
-              setPatientAttribute('name', event.target.value.trim())
-            }
-            value={patient.name}
-          />
-        </Container>
+        <AppointmentForm
+          setPatientAttribute={setPatientAttribute}
+          patient={patient}
+          doctors={doctors}
+          onSubmit={(event) => {
+            event.preventDefault();
+            setPatients((patients) => [...patients, patient]);
 
-        <Container className="mb-3">
-          <label htmlFor="fecha" className="form-label">
-            Fecha
-          </label>
-          <input
-            id="fecha"
-            className="form-control"
-            placeholder="Fecha"
-            type="date"
-            onChange={(event) =>
-              setPatientAttribute('date', event.target.value)
-            }
-            value={patient.date}
-          />
-        </Container>
-
-        <Container className="mb-3">
-          <label htmlFor="doctor" className="form-label">
-            Doctor
-          </label>
-          <select
-            value={patient.doctorId}
-            className="form-select"
-            id="doctor"
-            onChange={(event) => {
-              const doctorId = Number(event.target.value);
-              const { name } = doctors.find((doctor) => doctor.id === doctorId);
-              setPatientAttribute('doctor', name);
-              setPatientAttribute('doctorId', doctorId);
-            }}
-          >
-            <option value="0" disabled={true}>
-              Seleccione un medico
-            </option>
-            {doctors.map((doctor) => (
-              <option key={doctor.id} value={doctor.id}>
-                {doctor.name}
-              </option>
-            ))}
-          </select>
-        </Container>
-
-        <Container className="mb-3">
-          <label htmlFor="valor" className="form-label">
-            Valor Consulta
-          </label>
-          <input
-            id="valor"
-            className="form-control"
-            placeholder="10000"
-            type="number"
-            onChange={(event) =>
-              setPatientAttribute('price', Number(event.target.value))
-            }
-            value={patient.price}
-          />
-        </Container>
+            setShowModal(false);
+          }}
+        />
       </Modal>
 
       <main>
